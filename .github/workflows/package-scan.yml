@@ -51,7 +51,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_AUTH_TOKEN }}
         with:
           args: --severity-threshold=high
 
@@ -68,7 +68,7 @@ jobs:
       - name: Run Snyk Code Scan And Check Snyk Scan Results
         run: snyk code test
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_AUTH_TOKEN }}
 
   # We will also use Snyk to perform code scanning of our Terraform IAC files
 
@@ -83,7 +83,7 @@ jobs:
       - name: Run Snyk Code Scan And Check Snyk Scan Results
         uses: snyk/actions/iac@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_AUTH_TOKEN }}
         with:
           args: --severity-threshold=high
 
